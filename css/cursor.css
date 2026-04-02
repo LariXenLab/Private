@@ -1,0 +1,81 @@
+/* MAIN CURSOR */
+.cursor {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+
+  background: #00ffcc;
+
+  box-shadow:
+    0 0 10px #00ffcc,
+    0 0 20px rgba(0,255,200,0.5);
+
+  pointer-events: none;
+  z-index: 9999;
+
+  transform: translate(-50%, -50%);
+}
+
+/* CANVAS FOR LINES */
+.cursor-canvas {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+}
+
+/* PARTICLES */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  background: rgba(0,255,200,0.8);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ORBITS */
+.particle:nth-child(1) {
+  animation: orbit1 2s linear infinite;
+}
+
+.particle:nth-child(2) {
+  animation: orbit2 3s linear infinite;
+}
+
+.particle:nth-child(3) {
+  animation: orbit3 4s linear infinite;
+}
+
+/* ORBIT ANIMATIONS */
+@keyframes orbit1 {
+  0%   { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+  0%   { transform: rotate(0deg) translateX(28px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(28px) rotate(360deg); }
+}
+
+@keyframes orbit3 {
+  0%   { transform: rotate(0deg) translateX(36px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(36px) rotate(-360deg); }
+}
+
+/* HIDE DEFAULT CURSOR */
+body {
+  cursor: none;
+}
+
+.cursor.hover .particle {
+  animation-duration: 0.5s;
+  background: #ff4dd2;
+}
