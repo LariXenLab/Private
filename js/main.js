@@ -1,4 +1,14 @@
 
+let mouse = {
+  x: null,
+  y: null
+};
+
+window.addEventListener("mousemove", (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
 const cursor = document.querySelector(".cursor");
 
 window.addEventListener("mousemove", (e) => {
@@ -87,7 +97,21 @@ function drawNetwork() {
       let dist = Math.sqrt(dx * dx + dy * dy);
 
       if (dist < 120) {
-        let opacity = (1 - dist / 120) * 0.4;
+        let opacity = (1 - dist / 120) * 0.2;
+
+// boost near mouse
+  if (mouse.x && mouse.y) {
+   let mx = (nodes[i].x + nodes[j].x) / 2;
+   let my = (nodes[i].y + nodes[j].y) / 2;
+
+   let dmx = mouse.x - mx;
+   let dmy = mouse.y - my;
+   let mdist = Math.sqrt(dmx * dmx + dmy * dmy);
+
+   if (mdist < 150) {
+    opacity += (150 - mdist) / 150 * 0.4;
+   }
+ }
 
         ctx.strokeStyle = `rgba(10, 37, 64, ${opacity})`;
         ctx.lineWidth = 1;
@@ -101,18 +125,49 @@ function drawNetwork() {
   }
 
   // DRAW NODES
-  nodes.forEach(node => {
-    ctx.fillStyle = "rgba(10, 37, 64, 0.8)";
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-    ctx.fill();
+nodes.forEach(node => {
 
-    node.x += node.vx;
-    node.y += node.vy;
+  let size = 2;
 
-    if (node.x < 0 || node.x > canvasBg.width) node.vx *= -1;
-    if (node.y < 0 || node.y > canvasBg.height) node.vy *= -1;
-  });
+  if (mouse.x && mouse.y) {
+    let dx = mouse.x - node.x;
+    let dy = mouse.y - node.y;
+    let dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < 120) {
+      size = 2 + (120 - dist) / 40;
+    }
+  }
+
+  ctx.beginPath();   // 🔥 must come first
+  ctx.arc(node.x, node.y, size, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(10, 37, 64, 0.8)";
+  ctx.fill();
+
+  // movement
+  node.x += node.vx;
+  node.y += node.vy;
+
+  if (node.x < 0 || node.x > canvasBg.width) node.vx *= -1;
+  if (node.y < 0 || node.y > canvasBg.height) node.vy *= -1;
+});
+
+
+  if (mouse.x && mouse.y) {
+  const gradient = ctx.createRadialGradient(
+    mouse.x, mouse.y, 0,
+    mouse.x, mouse.y, 120
+  );
+
+  gradient.addColorStop(0, "rgba(0,120,255,0.15)");
+  gradient.addColorStop(1, "rgba(0,120,255,0)");
+
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(mouse.x, mouse.y, 120, 0, Math.PI * 2);
+  ctx.fill();
+}
+
 
   requestAnimationFrame(drawNetwork);
 }
