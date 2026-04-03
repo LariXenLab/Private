@@ -1,114 +1,181 @@
+/* =========================
+   RESET + BASE
+========================= */
 html, body {
-  height: auto;
-}
-/* RESET */
-body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle, #0f2740, #081a2b);
-  color: white;
-  overflow-x: hidden;
-  cursor: none;
-  
+  padding: 0;
 }
 
-/* BACKGROUND NETWORK */
+body {
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at 30% 30%, #eaf4ff, #f8fbff 40%, #ffffff 100%);
+  color: #0d3359;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* =========================
+   BACKGROUND NETWORK
+========================= */
 #bg-network {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
   z-index: 0;
   pointer-events: none;
 }
 
-/* make sure content is above */
-.hero, .content, .pinned {
+/* keep content above canvas */
+.profile-layout {
   position: relative;
   z-index: 1;
 }
 
-
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* =========================
+   MAIN LAYOUT (LEFT + RIGHT)
+========================= */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  padding: 100px;
 }
 
-/* TITLE ANIMATION */
-.title {
-  font-size: 60px;
-  opacity: 0;
-  transform: translateY(50px);
-  animation: fadeUp 1.5s ease forwards;
+/* =========================
+   LEFT PANEL (STICKY)
+========================= */
+.left-panel {
+  position: sticky;
+  top: 120px;
+  height: fit-content;
 }
 
-.subtitle {
-  opacity: 0;
-  animation: fadeUp 2s ease forwards;
-  animation-delay: 0.5s;
-}
-
-/* CONTENT */
-.content {
-  padding: 100px 20px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-/* CARDS */
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 40px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-  cursor: pointer;
-  
-}
-
-/* HOVER EFFECT */
-.card:hover {
-  transform: translateY(-10px) scale(1.05);
-  background: rgba(255,255,255,0.1);
-}
-
-/* ANIMATION KEYFRAMES */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* PINNED SECTION */
-.pinned {
-  height: 200vh; /* important: gives scroll space */
-  position: relative;
-}
-
-.pinned-inner {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* TEXT STYLE */
-.pinned-title {
-  font-size: 50px;
+/* NAME */
+.name {
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-.pinned-text {
-  font-size: 20px;
-  opacity: 0.7;
+/* =========================
+   PROFILE CARD (3D)
+========================= */
+.profile-card {
+  width: 240px;
+  height: 300px;
+  perspective: 1200px;
+}
+
+.profile-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* FRONT + BACK */
+.profile-front,
+.profile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.profile-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* BACK TEXT */
+.profile-back {
+  background: rgba(255,255,255,0.9);
+  color: #0a2540;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+/* CONTENT BLOCKS */
+.cv-block {
+  max-width: 700px;
+}
+
+.cv-block h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.cv-block p {
+  line-height: 1.6;
+}
+
+/* =========================
+   STACK CARDS (INSIDE RIGHT PANEL)
+========================= */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.stack-card {
+  width: 320px;
+  padding: 25px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,0,0,0.05);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+/* hover */
+.stack-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* =========================
+   CURSOR (KEEP YOUR EXISTING)
+========================= */
+/* your cursor.css handles this */
+
+/* =========================
+   RESPONSIVE (IMPORTANT)
+========================= */
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel {
+    position: relative;
+    top: auto;
+  }
+
+  .stack-card {
+    width: 100%;
+  }
 }

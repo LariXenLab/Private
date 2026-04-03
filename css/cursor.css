@@ -1,15 +1,17 @@
-/* MAIN CURSOR */
+/* =========================
+   MAIN CURSOR
+========================= */
 .cursor {
   position: fixed;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
 
-  background: #00ffcc;
+  background: rgba(10, 37, 64, 0.9);
 
   box-shadow:
-    0 0 10px #00ffcc,
-    0 0 20px rgba(0,255,200,0.5);
+    0 0 8px rgba(10, 37, 64, 0.4),
+    0 0 18px rgba(0,120,255,0.3);
 
   pointer-events: none;
   z-index: 9999;
@@ -17,7 +19,9 @@
   transform: translate(-50%, -50%);
 }
 
-/* CANVAS FOR LINES */
+/* =========================
+   CANVAS (LINES AROUND CURSOR)
+========================= */
 .cursor-canvas {
   position: absolute;
   top: -50px;
@@ -27,14 +31,16 @@
   pointer-events: none;
 }
 
-/* PARTICLES */
+/* =========================
+   PARTICLES (ORBIT)
+========================= */
 .particle {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
 
-  background: rgba(0,255,200,0.8);
+  background: rgba(0, 120, 255, 0.7);
 
   top: 50%;
   left: 50%;
@@ -43,39 +49,51 @@
 
 /* ORBITS */
 .particle:nth-child(1) {
-  animation: orbit1 2s linear infinite;
+  animation: orbit1 2.5s linear infinite;
 }
 
 .particle:nth-child(2) {
-  animation: orbit2 3s linear infinite;
+  animation: orbit2 3.5s linear infinite;
 }
 
 .particle:nth-child(3) {
-  animation: orbit3 4s linear infinite;
+  animation: orbit3 4.5s linear infinite;
 }
 
-/* ORBIT ANIMATIONS */
+/* =========================
+   ORBIT ANIMATIONS
+========================= */
 @keyframes orbit1 {
-  0%   { transform: rotate(0deg) translateX(20px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+  0%   { transform: rotate(0deg) translateX(18px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(18px) rotate(-360deg); }
 }
 
 @keyframes orbit2 {
-  0%   { transform: rotate(0deg) translateX(28px) rotate(0deg); }
-  100% { transform: rotate(-360deg) translateX(28px) rotate(360deg); }
+  0%   { transform: rotate(0deg) translateX(26px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(26px) rotate(360deg); }
 }
 
 @keyframes orbit3 {
-  0%   { transform: rotate(0deg) translateX(36px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(36px) rotate(-360deg); }
+  0%   { transform: rotate(0deg) translateX(34px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(34px) rotate(-360deg); }
 }
 
-/* HIDE DEFAULT CURSOR */
-body {
-  cursor: none;
+/* =========================
+   HOVER EFFECT
+========================= */
+.cursor.hover {
+  transform: translate(-50%, -50%) scale(1.4);
+  background: rgba(0,120,255,0.9);
 }
 
 .cursor.hover .particle {
-  animation-duration: 0.5s;
-  background: #ff4dd2;
+  animation-duration: 0.8s;
+  background: rgba(0,120,255,1);
+}
+
+/* =========================
+   HIDE DEFAULT CURSOR
+========================= */
+body {
+  cursor: none;
 }

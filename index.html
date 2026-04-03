@@ -3,52 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <title>Arezou Lari</title>
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/cursor.css">
 </head>
 
 <body>
 
+  <!-- BACKGROUND -->
   <canvas id="bg-network"></canvas>
+
+  <!-- CURSOR -->
   <div class="cursor">
-  <canvas class="cursor-canvas"></canvas>
-
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-</div>
-
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1 class="title">Arezou Lari</h1>
-    <p class="subtitle">Bioinformatics • Spatial Omics • Data Science</p>
-  </section>
-
-  <!-- CONTENT SECTION -->
-  <section class="content">
-    <div class="card">🧬 Spatial Transcriptomics</div>
-    <div class="card">🧪 Metabolomics</div>
-    <div class="card">📊 Data Analysis</div>
-  </section>
-
-
- <section class="pinned">
-  <div class="pinned-inner">
-    <h2 class="pinned-title">My Research</h2>
-    <p class="pinned-text">Exploring spatial omics and data-driven biology</p>
+    <canvas class="cursor-canvas"></canvas>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
-</section>
 
+  <!-- =========================
+       MAIN PROFILE LAYOUT
+  ========================== -->
+  <section class="profile-layout">
 
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <h1 class="name">Arezou Lari</h1>
 
+      <div class="profile-card">
+        <div class="profile-inner">
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+          <!-- FRONT -->
+          <div class="profile-front">
+            <img src="images/arezou.jpg" alt="Arezou">
+          </div>
 
-<script src="js/main.js"></script>
+          <!-- BACK -->
+          <div class="profile-back">
+            <p>
+              Bioinformatics • Spatial Omics • Data Science
+            </p>
+          </div>
 
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+      <!-- RESEARCH -->
+      <section class="cv-block">
+        <h2>My Research</h2>
+        <p>
+          My research focuses on spatial omics, integrating transcriptomics and 
+          metabolomics to understand biological organization in bone tissue.
+        </p>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="cv-block">
+        <h2>Education</h2>
+        <p><b>2012</b> Doctor of Pharmay</p>
+        <p><b>2023</b> Ph.D. of Systems Biomedicine</p>
+      </section>
+
+      <!-- POSTDOC -->
+      <section class="cv-block">
+        <h2>Postdoctoral Training</h2>
+        <p>Ludwig Boltzmann Institute of Osteology</p>
+      </section>
+
+      <!-- INTERESTS + STACK -->
+      <section class="cv-block">
+        <h2>Research Interests</h2>
+
+        <div class="stack">
+
+          <div class="stack-card">
+            <h3>🧬 Spatial Transcriptomics</h3>
+            <p>Mapping gene expression in tissue space.</p>
+          </div>
+
+          <div class="stack-card">
+            <h3>🧪 Spatial Metabolomics</h3>
+            <p>Exploring metabolic landscapes in tissue.</p>
+          </div>
+
+          <div class="stack-card">
+            <h3>📊 Data Integration</h3>
+            <p>Combining multi-omics data.</p>
+          </div>
+
+          <div class="stack-card">
+            <h3>🧠 Bioinformatics</h3>
+            <p>Turning data into biological insight.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="cv-block">
+        <h2>Contact</h2>
+        <p>arezou.lari@lbg.ac.at</p>
+      </section>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+  <script src="js/main.js"></script>
 
 </body>
 </html>
