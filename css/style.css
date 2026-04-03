@@ -179,3 +179,153 @@ body {
     width: 100%;
   }
 }
+
+
+/* =========================
+   PUBLICATIONS
+========================= */
+.publication {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.05);
+
+  backdrop-filter: blur(10px);
+}
+
+/* title */
+.pub-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* journal */
+.pub-meta {
+  font-size: 14px;
+  color: #5b7c99;
+  margin-bottom: 10px;
+}
+
+/* link */
+.pub-link {
+  font-size: 14px;
+  text-decoration: none;
+  color: #0078ff;
+  transition: 0.2s;
+}
+
+.pub-link:hover {
+  opacity: 0.7;
+}
+
+/* more publications */
+.more-publications {
+  margin-top: 15px;
+}
+
+.more-publications a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #0a2540;
+}
+/* =========================
+   PREMIUM PUBLICATION CARD
+========================= */
+.publication.featured {
+  margin-top: 25px;
+  padding: 28px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.85),
+    rgba(240,247,255,0.9)
+  );
+
+  border: 1px solid rgba(0, 120, 255, 0.08);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05),
+    0 0 40px rgba(0,120,255,0.05);
+
+  transition: all 0.3s ease;
+}
+
+/* hover effect */
+.publication.featured:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.08),
+    0 0 60px rgba(0,120,255,0.08);
+}
+
+/* title */
+.pub-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* journal + year */
+.pub-meta {
+  font-size: 13px;
+  color: #5b7c99;
+  margin-bottom: 10px;
+}
+
+.pub-meta .journal {
+  font-style: italic;
+  margin-right: 10px;
+}
+
+.pub-meta .year {
+  font-weight: 500;
+}
+
+/* DOI */
+.pub-doi {
+  font-size: 13px;
+  margin-bottom: 15px;
+  color: #4a6a85;
+}
+
+.pub-doi a {
+  text-decoration: none;
+  color: #0078ff;
+}
+
+/* action button */
+.pub-actions a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #0078ff;
+
+  border-bottom: 1px solid transparent;
+  transition: 0.2s;
+}
+
+.pub-actions a:hover {
+  border-color: #0078ff;
+}
+
+/* MORE LINK */
+.more-publications {
+  margin-top: 20px;
+}
+
+.more-publications a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #0a2540;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.more-publications a:hover {
+  opacity: 1;
+}
