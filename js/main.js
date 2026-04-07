@@ -1,7 +1,8 @@
 
 let mouse = {
   x: null,
-  y: null
+  y: null,
+  radius: 120
 };
 
 window.addEventListener("mousemove", (e) => {
@@ -145,8 +146,26 @@ nodes.forEach(node => {
   ctx.fill();
 
   // movement
-  node.x += node.vx;
-  node.y += node.vy;
+// =========================
+// MAGNETIC EFFECT
+// =========================
+if (mouse.x && mouse.y) {
+  let dx = mouse.x - node.x;
+  let dy = mouse.y - node.y;
+  let distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (distance < mouse.radius) {
+    let force = (mouse.radius - distance) / mouse.radius;
+
+    node.x -= dx * force * 0.04;
+    node.y -= dy * force * 0.04;
+  }
+}
+
+// NORMAL MOVEMENT
+node.x += node.vx;
+node.y += node.vy;
+
 
   if (node.x < 0 || node.x > canvasBg.width) node.vx *= -1;
   if (node.y < 0 || node.y > canvasBg.height) node.vy *= -1;
