@@ -126,6 +126,16 @@ body {
 
 .cv-block p {
   line-height: 1.6;
+  margin-bottom: 12px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+.highlight {
+  color: #4fc3f7;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* =========================
@@ -328,4 +338,81 @@ body {
 
 .more-publications a:hover {
   opacity: 1;
+}
+
+/* =========================
+   CONTACT FORM (PREMIUM)
+========================= */
+.contact-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+}
+
+/* group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* labels */
+.form-group label {
+  font-size: 13px;
+  color: #5b7c99;
+}
+
+/* inputs */
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.6);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 14px;
+  color: #0a2540;
+
+  transition: all 0.2s ease;
+}
+
+/* focus effect */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #0078ff;
+  box-shadow: 0 0 0 3px rgba(0,120,255,0.1);
+}
+
+/* button */
+.contact-form button {
+  margin-top: 10px;
+  width: fit-content;
+
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+
+  background: linear-gradient(135deg, #0078ff, #00aaff);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(0,120,255,0.2);
+
+  transition: all 0.25s ease;
+}
+
+/* hover */
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,120,255,0.3);
 }
